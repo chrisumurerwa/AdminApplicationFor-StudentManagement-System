@@ -43,28 +43,32 @@ function App() {
   return (
     <div className="admin-container">
       <nav className="sidebar">
-        <div className="sidebar-header">
-          <h2>School Admin</h2>
-          <p>{adminData?.name}</p>
+        <div className="sidebar-content">
+          <div className="sidebar-header">
+            <h2>School Admin</h2>
+            <p>{adminData?.name}</p>
+          </div>
+          <ul className="nav-menu">
+            <li className={currentView === 'dashboard' ? 'active' : ''} onClick={() => setCurrentView('dashboard')}>
+              Dashboard
+            </li>
+            <li className={currentView === 'users' ? 'active' : ''} onClick={() => setCurrentView('users')}>
+              User Management
+            </li>
+            <li className={currentView === 'fees' ? 'active' : ''} onClick={() => setCurrentView('fees')}>
+              Fee Management
+            </li>
+            <li className={currentView === 'academic' ? 'active' : ''} onClick={() => setCurrentView('academic')}>
+              Academic Records
+            </li>
+            <li className={currentView === 'classes' ? 'active' : ''} onClick={() => setCurrentView('classes')}>
+              Class Management
+            </li>
+          </ul>
         </div>
-        <ul className="nav-menu">
-          <li className={currentView === 'dashboard' ? 'active' : ''} onClick={() => setCurrentView('dashboard')}>
-            Dashboard
-          </li>
-          <li className={currentView === 'users' ? 'active' : ''} onClick={() => setCurrentView('users')}>
-            User Management
-          </li>
-          <li className={currentView === 'fees' ? 'active' : ''} onClick={() => setCurrentView('fees')}>
-            Fee Management
-          </li>
-          <li className={currentView === 'academic' ? 'active' : ''} onClick={() => setCurrentView('academic')}>
-            Academic Records
-          </li>
-          <li className={currentView === 'classes' ? 'active' : ''} onClick={() => setCurrentView('classes')}>
-            Class Management
-          </li>
-          <li onClick={handleLogout}>Logout</li>
-        </ul>
+        <div className="sidebar-footer">
+          <div className="logout-btn" onClick={handleLogout}>Logout</div>
+        </div>
       </nav>
       <main className="main-content">
         {currentView === 'dashboard' && <Dashboard />}
